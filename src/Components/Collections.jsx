@@ -31,7 +31,7 @@ const Collections = () => {
   };
 
   return (
-    <section className="py-24 px-4 md:px-14 bg-white overflow-hidden">
+    <section className="py-24 px-4 md:px-14 bg-white overflow-hidden" id="collections">
       {/* Animated Section Title */}
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}

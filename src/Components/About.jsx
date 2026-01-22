@@ -5,7 +5,7 @@ import aboutBg from './shoe bbg.webp'
 const About = () => {
   return (
     <section 
-      className='relative w-full min-h-[500px] md:min-h-[700px] flex items-center py-16 md:py-24 overflow-hidden'
+      className='relative w-full min-h-[500px] md:min-h-[700px] flex items-center py-16 md:py-24 overflow-hidden'id="about"
     >
       {/* Background Image with a subtle parallax-like entry */}
       <motion.div 

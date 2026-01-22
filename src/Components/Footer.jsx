@@ -16,7 +16,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#2e2e2e] text-zinc-300 pt-20 pb-10 px-6 md:px-14 overflow-hidden">
+    <footer className="bg-[#2e2e2e] text-zinc-300 pt-20 pb-10 px-6 md:px-14 overflow-hidden" >
       
       {/* Newsletter Section */}
       <motion.div 

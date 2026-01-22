@@ -4,7 +4,7 @@ import heroBg from './shoe bbg.webp'
 
 const Hero = () => {
   return (
-    <section className='overflow-hidden'>
+    <section className='overflow-hidden' id='home'>
       {/* Background Image Section */}
       <div className='relative h-screen flex items-end overflow-hidden'>
         {/* Animated Background Zoom */}
