@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useCart } from './CartContext'; // Ensure this path is correct
+import { useCart } from './CartContext';
 
 const products = [
   { id: 1, name: 'TEAL', price: 575642.30, soldOut: true, img: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4" },
@@ -10,7 +10,19 @@ const products = [
 ];
 
 const FeaturedCollection = () => {
-  const { addToCart } = useCart(); // Destructure the function from our context
+  const { addToCart } = useCart();
+
+  // JavaScript Smooth Scroll Handler
+  const scrollToCollections = (e) => {
+    e.preventDefault();
+    const element = document.getElementById('collections');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -26,7 +38,7 @@ const FeaturedCollection = () => {
   };
 
   return (
-    <section id="collections" className="py-24 px-6 md:px-14 bg-white overflow-hidden">
+    <section className="py-24 px-6 md:px-14 bg-white overflow-hidden">
       <motion.h2 
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -50,24 +62,17 @@ const FeaturedCollection = () => {
             className="flex flex-col items-center group cursor-pointer"
           >
             <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#f9f9f9] mb-6">
-              {/* Add to Cart Button - Refined for Mobile & Desktop */}
-{!product.soldOut && (
-  <button 
-    onClick={(e) => {
-      e.stopPropagation();
-      addToCart(product);
-    }}
-    className="
-      absolute bottom-0 w-full bg-black text-white py-4 text-[10px] tracking-[0.3em] uppercase z-20 
-      /* Mobile: Always visible, slightly smaller */
-      translate-y-0 opacity-100 
-      /* Desktop: Hide and slide up on hover */
-      lg:translate-y-full lg:group-hover:translate-y-0 lg:transition-transform lg:duration-300 lg:ease-out
-    "
-  >
-    Add to Bag +
-  </button>
-)}
+              {!product.soldOut && (
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(product);
+                  }}
+                  className="absolute bottom-0 w-full bg-black text-white py-4 text-[10px] tracking-[0.3em] uppercase z-20 translate-y-0 opacity-100 lg:translate-y-full lg:group-hover:translate-y-0 lg:transition-transform lg:duration-300 lg:ease-out"
+                >
+                  Add to Bag +
+                </button>
+              )}
               
               <img
                 src={product.img}
@@ -81,11 +86,28 @@ const FeaturedCollection = () => {
               {product.name}
             </h3>
             <p className="text-[11px] text-zinc-400 font-light tracking-wider">
-              {/* Format number to currency string */}
               Rs. {product.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}
             </p>
           </motion.div>
         ))}
+      </motion.div>
+
+      {/* --- SMOOTH SCROLL BUTTON --- */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="mt-20 flex justify-center"
+      >
+        <button 
+          onClick={scrollToCollections}
+          className="group relative px-12 py-4 border border-zinc-200 text-[10px] tracking-[0.4em] uppercase transition-all duration-500"
+        >
+          <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+            View All Collections
+          </span>
+          <div className="absolute inset-0 bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+        </button>
       </motion.div>
     </section>
   );
