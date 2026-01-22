@@ -29,7 +29,7 @@ const Hero = () => {
         
         <div className="absolute inset-0 bg-black/20 z-10" />
 
-        <div className='relative z-20 w-full p-6 md:p-16 lg:p-24 space-y-6'>
+        <div className='relative z-20 w-full md:bottom-0 bottom-15 p-6 md:p-16 lg:p-24 space-y-6'>
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
